@@ -1,4 +1,4 @@
-package JsonORM
+package jsonorm
 
 import (
 	"encoding/json"
