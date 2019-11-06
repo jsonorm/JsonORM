@@ -12,7 +12,14 @@ JSON ORM is a json orm specification.
         {
             "table": "user_extend",
             "relationship": "one",
-            "condition": "id,user_id"
+            "condition": "id,user_id",
+            "with": [
+                {
+                    "table": "user_extend",
+                    "relationship": "one",
+                    "condition": "id,user_id"
+                }
+            ]
         },{
             "table": "user_login_log",
             "relationship": "many",
@@ -46,7 +53,7 @@ JSON ORM is a json orm specification.
 	"select": "id,name,sex,created_at",
 	"offset": 0,
 	"limit": 10,
-	"orderBy": "id,desc",
+	"orderBy": "id:desc;created_at:desc",
 	"handle": "get" // get first delete update create
 }
 ```
