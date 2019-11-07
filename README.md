@@ -5,7 +5,6 @@ JSON ORM is a json orm specification.
 
 ## table `string`
 查询表的表名
-PS:
 ```json
 {
 	"table": "user"
@@ -18,7 +17,6 @@ PS:
 ### condition `string`
 关联查询时对于管理查询条件:`localKey=foreignKey`,默认 `id=tableName_id`
 
-PS:
 ```json
 {
     "table": "user",
