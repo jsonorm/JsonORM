@@ -1,19 +1,20 @@
 # JSON ORM
 JSON ORM is a json orm specification.
 
----
+# idea
 
 - table
 - with
-- relationship
+- relationship 
 - condition
+- join
 - where
-- orWhere
+- orWhere and orwhere
 - select
 - offset
 - limit
-- orderBy
-- handle
+- order
+- handle or func or get
 
 ```json
 {
@@ -35,6 +36,10 @@ JSON ORM is a json orm specification.
             "relationship": "many",
             "condition": "id,user_id"
         }
+    ],
+    "join": [
+      ["user_auth","user.id","user_auth.user_id"],
+      ["user_login_log","user.id","user_login_log.user_id"]
     ],
 	"where": [
 		["id", 1],
@@ -60,10 +65,10 @@ JSON ORM is a json orm specification.
 		["id", "in", ["12",123]],
 		["id", "not in", ["12",123]]
 	],
-	"select": "id,name,sex,created_at",
+	"select": ["id,name,sex,created_at","user_auth.*"],
 	"offset": 0,
 	"limit": 10,
 	"orderBy": "id:desc;created_at:desc",
-	"handle": "get" // get first delete update create
+	"func": "get" // get first delete update create
 }
 ```
