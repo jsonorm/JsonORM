@@ -3,7 +3,7 @@ JSON ORM is a json orm specification.
 
 # idea
 
-## table 
+## table `string`
 查询表的表名
 PS:
 ```json
@@ -11,11 +11,11 @@ PS:
 	"table": "user"
 }
 ```
-## with
+## with `array`
 关联查询
-### relationship 
-关联查询时对应查询类型: 一对一`one`, 一对多`many`
-### condition
+### relationship `string`
+关联查询时对应查询类型: 一对一`one`, 一对多`many`, 默认 `one`
+### condition `string`
 关联查询时对于管理查询条件:`localKey=foreignKey`,默认 `id=tableName_id`
 
 PS:
@@ -25,35 +25,36 @@ PS:
     "with": [
         {
             "table": "user_extend",
-            "relationship": "one",
-            "condition": "id=user_id",
-            "with": [
-                {
-                    "table": "user_extend",
-                    "relationship": "one",
-                    "condition": "id=user_id"
-                }
-            ]
+            "relationship": "one", // 可省略
+            "condition": "id=user_id"  // 可省略
         },{
             "table": "user_login_log",
             "relationship": "many",
-            "condition": "id=user_id"
+            "condition": "id=uid" // 不可省略
         }
     ]
 }
 ```
-## join
+## join `array`
+```json
+{
+	"table": "user",
+    "join": [
+      ["user_auth","user.id","user_auth.user_id"],
+      ["user_login_log","user.id","user_login_log.user_id"]
+    ]
+}
+```
 
 
-
-## where
-## orWhere and orwhere
+## where `array`
+## orWhere and orwhere  `array`
 同 `where`
-## select
-## offset
-## limit
-## order
-## handle or func or get
+## select `string`
+## offset `integer`
+## limit `integer`
+## order `array`
+## handle or func or get `string`
 
 ```json
 {
