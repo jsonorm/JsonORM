@@ -4,7 +4,7 @@ JSON ORM is a json orm specification.
 # idea
 
 ## table `string`
-查询表的表名
+database table name 
 ```json
 {
 	"table": "user"
