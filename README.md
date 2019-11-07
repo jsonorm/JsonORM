@@ -3,18 +3,57 @@ JSON ORM is a json orm specification.
 
 # idea
 
-- table
-- with
-- relationship 
-- condition
-- join
-- where
-- orWhere and orwhere
-- select
-- offset
-- limit
-- order
-- handle or func or get
+## table 
+查询表的表名
+PS:
+```json
+{
+	"table": "user"
+}
+```
+## with
+关联查询
+### relationship 
+关联查询时对应查询类型: 一对一`one`, 一对多`many`
+### condition
+关联查询时对于管理查询条件:`localKey=foreignKey`,默认 `id=tableName_id`
+
+PS:
+```json
+{
+    "table": "user",
+    "with": [
+        {
+            "table": "user_extend",
+            "relationship": "one",
+            "condition": "id=user_id",
+            "with": [
+                {
+                    "table": "user_extend",
+                    "relationship": "one",
+                    "condition": "id=user_id"
+                }
+            ]
+        },{
+            "table": "user_login_log",
+            "relationship": "many",
+            "condition": "id=user_id"
+        }
+    ]
+}
+```
+## join
+
+
+
+## where
+## orWhere and orwhere
+同 `where`
+## select
+## offset
+## limit
+## order
+## handle or func or get
 
 ```json
 {
